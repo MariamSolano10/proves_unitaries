@@ -1,0 +1,24 @@
+name: CI/CD Pipeline CompteBancari
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout del repositori
+      uses: actions/checkout@v3
+
+    - name: Configurar Java JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+
+    - name: Compilar i executar tests unitaris
+      run: mvn -B test --file pom.xml
+      
