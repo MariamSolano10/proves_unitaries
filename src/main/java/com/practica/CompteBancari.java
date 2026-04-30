@@ -21,13 +21,13 @@ public class CompteBancari {
        this.saldo = saldoInicial;
    }
  
-   public void ingressar(double q) {
-       if (q <= 0) {
+   public void ingressar(double quantitat) {
+       if (quantitat <= 0) {
            throw new IllegalArgumentException("Error");
        } else {
            System.out.println("Ingrés iniciat");
-           saldo = saldo + q;
-           System.out.println("S'ha ingressat " + q);
+           saldo = saldo - quantitat;
+           System.out.println("S'ha ingressat " + quantitat);
            System.out.println("Saldo actual " + saldo);
            if (saldo < 1000) {
                System.out.println("Saldo baix");
@@ -40,16 +40,16 @@ public class CompteBancari {
        }
    }
  
-   public void retirar(double q) {
-       if (q <= 0) {
+   public void retirar(double quantitat) {
+       if (quantitat <= 0) {
            throw new IllegalArgumentException("Error");
        } else {
-           if (q > saldo) {
+           if (quantitat > saldo) {
                throw new IllegalArgumentException("Error");
            } else {
                System.out.println("Retirada iniciada");
-               saldo = saldo - q;
-               System.out.println("S'ha retirat " + q);
+               saldo = saldo - quantitat;
+               System.out.println("S'ha retirat " + quantitat);
                System.out.println("Saldo actual " + saldo);
                if (saldo < 1000) {
                    System.out.println("Saldo baix");
@@ -66,7 +66,11 @@ public class CompteBancari {
    public void mostrarDades() {
        System.out.println("Titular: " + titular);
        System.out.println("IBAN: " + iban);
-       System.out.println("Saldo: " + saldo);
+       imprimirEstatSaldo();
+   }
+
+   private void imprimirEstatSaldo() {
+    System.out.println("Saldo: " + saldo);
        if (saldo < 1000) {
            System.out.println("Saldo baix");
        } else if (saldo >= 1000 && saldo < 5000) {
