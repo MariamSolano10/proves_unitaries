@@ -26,7 +26,7 @@ public class CompteBancari {
            throw new IllegalArgumentException("Error");
        } else {
            System.out.println("Ingrés iniciat");
-           saldo = saldo - quantitat;
+           saldo = saldo + quantitat;
            System.out.println("S'ha ingressat " + quantitat);
            System.out.println("Saldo actual " + saldo);
            if (saldo < 1000) {
